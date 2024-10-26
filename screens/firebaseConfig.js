@@ -1,21 +1,11 @@
-// Import the functions you need from the SDKs you need
 // firebaseConfig.js
-import { initializeApp } from 'firebase/app';
-import { getAnalytics } from 'firebase/analytics';
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC1NdNhh6DtBuLRgp9X0sDwKUSynqny1cQ",
-  authDomain: "mynewpro-3ea89.firebaseapp.com",
-  projectId: "mynewpro-3ea89",
-  storageBucket: "mynewpro-3ea89.appspot.com",
-  messagingSenderId: "559232418524",
-  appId: "1:559232418524:web:5ac58bb17df54e9781aa19",
-  measurementId: "G-EE9Y58DZRE"
+  apiKey: "AIzaSyALLk8ycIdsoSF89FW48Hrnn2BxGIsjxvU",
+  authDomain: "wcare-aaec0.firebaseapp.com",
+  projectId: "wcare-aaec0",
+  storageBucket: "wcare-aaec0.appspot.com",
+  messagingSenderId: "172509980586",
+  appId: "1:172509980586:web:4d609e77bba5a3e80d2dd3"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-export { app, analytics };
+export default firebaseConfig;

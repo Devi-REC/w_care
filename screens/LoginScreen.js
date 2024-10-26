@@ -25,7 +25,7 @@ export default function LoginScreen({ navigation }) {
     <View style={styles.container}>
       <View style={styles.overlay}>
         <Image
-          source={require('./wcare_logo.png')} // Replace with your logo URL or local path
+          source={require('./preg_1.png')} // Replace with your logo URL or local path
           style={styles.logo}
         />
         <Text style={styles.title}>Login</Text>

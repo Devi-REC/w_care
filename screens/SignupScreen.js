@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert, Linking } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert, Linking, ScrollView } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { auth, database, storage } from './firebase'; // Ensure to import auth, database, and storage
 import { createUserWithEmailAndPassword } from 'firebase/auth';
@@ -7,7 +7,7 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { collection, addDoc } from 'firebase/firestore';
 import { Picker } from '@react-native-picker/picker'; // Use the new Picker import
 
-const nitroImage = require('./wcare_logo.png'); // Ensure the path is correct
+const nitroImage = require('./preg_2.png'); // Ensure the path is correct
 
 export default function SignUpScreen({ navigation }) {
   const [email, setEmail] = useState('');
@@ -107,7 +107,7 @@ export default function SignUpScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.overlay}>
         <Image source={nitroImage} style={styles.logo} />
         <Text style={styles.title}>Sign Up</Text>
@@ -165,13 +165,13 @@ export default function SignUpScreen({ navigation }) {
           <Text style={styles.backButtonText}>BACK</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1, // Allows ScrollView to grow with content
     backgroundColor: '#ffe6e6',
     justifyContent: 'center',
     alignItems: 'center',
@@ -179,6 +179,8 @@ const styles = StyleSheet.create({
   overlay: {
     backgroundColor: 'rgba(255, 255, 255, 0.8)',
     borderRadius: 20,
+    marginTop:'13%',
+    marginBottom:'10%',
     padding: 20,
     borderWidth: 2,
     borderColor: '#d9534f',
@@ -189,7 +191,8 @@ const styles = StyleSheet.create({
   logo: {
     width: 250,
     height: 200,
-    marginBottom: 20,
+    marginBottom: 10,
+    marginTop:0,
   },
   title: {
     fontSize: 32,
@@ -231,8 +234,12 @@ const styles = StyleSheet.create({
   },
   picker: {
     height: 50,
+    borderColor: '#d9534f', // Red border color for Picker
     width: '100%',
+    borderWidth: 1,
+    borderRadius: 8,
     marginBottom: 20,
+    backgroundColor: '#fff',
   },
   uploadButton: {
     height: 50,
@@ -270,11 +277,22 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   backButton: {
-    marginTop: 10,
+    marginTop: 20,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#d9534f',
+    backgroundColor: 'transparent',
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 0, // Disable elevation for Android
   },
   backButtonText: {
+    color: '#d9534f',
     fontSize: 16,
-    color: '#007BFF',
+  },
+  backButtonHover: {
+    backgroundColor: '#ffcccc', // Light red color for hover effect
   },
 });
-

@@ -1,23 +1,23 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 
-const FirstScreen = ({ navigation }) => {
+const FirstPageScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('./pic.png')} // Replace with your image URL
+        source={require('./wcare_logo.png')} // Replace with your image URL
         style={styles.image}
       />
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
-          <Text style={styles.buttonText}>Login</Text>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('First')}>
+          <Text style={styles.buttonText}>Citizen</Text>
         </TouchableOpacity>
 
         {/* Insert the "OR" text here */}
         <Text style={styles.middleText}>OR</Text>
 
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('SignUp')}>
-          <Text style={styles.buttonText}>Signup</Text>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Second')}>
+          <Text style={styles.buttonText}>volunteer</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   image: {
-    width: 200,
-    height: 200,
+    width: 300,
+    height: 210,
   },
   buttonContainer: {
     marginTop: 0,
@@ -66,4 +66,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FirstScreen;
+export default FirstPageScreen;

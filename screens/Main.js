@@ -2,10 +2,11 @@ import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Image } from 'react-native';
-import HomeScreen from './HomeScreen';  // Adjust the path accordingly
-import AlertScreen from './AlertScreen';  // Ensure the path is correct
+import HomeScreen from './HomeScreen';
+import AlertScreen from './AlertScreen';
 import SchemesScreen from './SchemesScreen';
 import AboutScreen from './AboutScreen';
+import ProfileScreen from './ProfileScreen'; // Import the Profile screen
 
 const Tab = createBottomTabNavigator();
 
@@ -28,6 +29,9 @@ export default function Main() {
             case 'About':
               iconName = 'info';
               break;
+            case 'Profile': // Add a profile icon for Profile screen
+              iconName = 'person';
+              break;
             default:
               iconName = 'circle';
           }
@@ -45,8 +49,8 @@ export default function Main() {
           headerShown: true,
           headerTitle: () => (
             <Image 
-              source={require('./wcare_logo.png')}  // Replace with your logo image path
-              style={{ width: 95, height: 100, resizeMode: 'contain',marginTop:"10%" }}
+              source={require('./wcare_logo.png')}
+              style={{ width: 95, height: 100, resizeMode: 'contain', marginTop: '10%' }}
             />
           ),
           headerStyle: { backgroundColor: '#ffe6e6' },
@@ -60,8 +64,8 @@ export default function Main() {
           headerShown: true,
           headerTitle: () => (
             <Image 
-              source={require('./wcare_logo.png')}  // Replace with your logo image path
-              style={{ width: 95, height: 100, resizeMode: 'contain',marginTop:"10%" }}
+              source={require('./wcare_logo.png')}
+              style={{ width: 95, height: 100, resizeMode: 'contain', marginTop: '10%' }}
             />
           ),
           headerStyle: { backgroundColor: '#ffe6e6' },
@@ -75,11 +79,11 @@ export default function Main() {
           headerShown: true,
           headerTitle: () => (
             <Image 
-              source={require('./wcare_logo.png')}  // Replace with your logo image path
-              style={{ width: 95, height: 100, resizeMode: 'contain',marginTop:"10%" }}
+              source={require('./wcare_logo.png')}
+              style={{ width: 95, height: 100, resizeMode: 'contain', marginTop: '10%' }}
             />
           ),
-          headerStyle: { backgroundColor: '#d9534f' },
+          headerStyle: { backgroundColor: '#ffe6e6' },
           headerTintColor: '#fff',
         }}
       />
@@ -90,11 +94,26 @@ export default function Main() {
           headerShown: true,
           headerTitle: () => (
             <Image 
-              source={require('./wcare_logo.png')}  // Replace with your logo image path
-              style={{ width: 95, height: 100, resizeMode: 'contain',marginTop:"10%" }}
+              source={require('./wcare_logo.png')}
+              style={{ width: 95, height: 100, resizeMode: 'contain', marginTop: '10%' }}
             />
           ),
-          headerStyle: { backgroundColor: '#d9534f' },
+          headerStyle: { backgroundColor: '#ffe6e6' },
+          headerTintColor: '#fff',
+        }}
+      />
+      <Tab.Screen
+        name="Profile" // Add Profile screen to the tab
+        component={ProfileScreen}
+        options={{
+          headerShown: true,
+          headerTitle: () => (
+            <Image 
+              source={require('./wcare_logo.png')}
+              style={{ width: 95, height: 100, resizeMode: 'contain', marginTop: '10%' }}
+            />
+          ),
+          headerStyle: { backgroundColor: '#ffe6e6' },
           headerTintColor: '#fff',
         }}
       />

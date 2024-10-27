@@ -12,6 +12,8 @@ import SecondScreen from './screens/SecondScreen';
 import VolunteerLoginScreen from './screens/VolunteerLoginScreen';
 import VolunteerSignUpScreen from './screens/VolunteerSignUpScreen';
 import VolunteerDashboardScreen from './screens/VolunteerDashboardScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import SchemeDetailScreen from './screens/SchemeDetailScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,9 +29,11 @@ export default function App() {
       
       <Stack.Screen name="VolunteerDashboard" component={VolunteerDashboardScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Main" component={Main} options={{ headerShown: false }}/>
         <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
         <Stack.Screen name="SignUp" component={SignupScreen} options={{ headerShown: false }}/> 
+        <Stack.Screen name="SchemeDetail" component={SchemeDetailScreen} options={{ headerShown: false }}/>
         <Stack.Screen name="Alert" component={AlertScreen} options={{ headerShown: false }}/> 
 
       </Stack.Navigator>

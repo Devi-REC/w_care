@@ -16,7 +16,7 @@ const FirstPageScreen = ({ navigation }) => {
         {/* Insert the "OR" text here */}
         <Text style={styles.middleText}>OR</Text>
 
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Second')}>
+        <TouchableOpacity style={styles.but} onPress={() => navigation.navigate('Second')}>
           <Text style={styles.buttonText}>volunteer</Text>
         </TouchableOpacity>
       </View>
@@ -47,6 +47,15 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#d9534f', // Button color
+    padding: 10,
+    borderRadius: 5,
+    width: '70%', // Make button fill the container width
+    alignItems: 'center',
+    marginTop:10,
+    marginBottom: 10, // Space between buttons
+  },
+  but: {
+    backgroundColor: '#0056b3', // Button color
     padding: 10,
     borderRadius: 5,
     width: '70%', // Make button fill the container width

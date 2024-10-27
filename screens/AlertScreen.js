@@ -1,7 +1,13 @@
-import React from 'react'
+import React from 'react';
+import { View, Text } from 'react-native';
 
-export default function AlertScreen() {
+const AlertScreen = () => {
   return (
-    <div>AlertScreen</div>
-  )
-}
+    <View>
+      <Text>Alert Screen Title</Text>
+      <Text>This is the alert screen content.</Text>
+    </View>
+  );
+};
+
+export default AlertScreen;

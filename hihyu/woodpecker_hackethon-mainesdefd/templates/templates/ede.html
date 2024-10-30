@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT App</title>
+    
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            position: fixed;
+            overflow: hidden;
+            
+            
+        }
+
+        .App {
+            display: flex;
+            height: 100vh;
+            background-color: #0fd33d;
+            
+        }
+
+        .sideBar {
+            background-color: #0fd33d;
+            color: #eaebec;
+            width: 250px;
+            border-right: 1px solid rgb(100, 100, 100);
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .upperSide {
+            margin-bottom: 20px;
+        }
+
+        .upperSideTop {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: #0fd33d;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .brand {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .midbtn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .addbtn {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .upperSideBottom {
+            margin-bottom: 20px;
+            
+        }
+
+        .query {
+            background-color: transparent;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .query img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .lowerSide {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .listItems {
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .listitemsImg {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            
+        }
+
+        .chats {
+            flex: 1;
+            padding: 20px;
+            overflow-y: scroll;
+            
+        }
+
+        .chat {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            background-color: #8dd3e9;
+            width:1030px;
+        }
+
+        .chatImg {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .txt {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 60%;
+            word-wrap: break-word;
+        }
+
+        .bot .txt {
+            background-color: #28a745;
+        }
+
+        .chatFooter {
+            padding: 2px;
+            background-color: #fff;
+            width: 90%px;
+            overflow: hidden;
+            border-top: 1px solid rgb(100, 100, 100);
+        }
+
+        .inp {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .inp input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .send {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .send img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .send:hover {
+            background-color: #0056b3;
+        }
+
+        .chatFooter p {
+            font-size: 12px;
+            color: #777;
+        }
+
+        /* Table styles */
+        .table-container {
+            padding: 2px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: auto; /* Enable both horizontal and vertical scrolling */
+            max-height: 500px; /* Adjust height as needed */
+            max-width: 100px; /* Allow the container to expand */
+            padding-top: 10px;
+            padding-right: 20px; /* Add padding to the right for scrollbar */
+            padding-bottom: 20px; /* Add padding to the bottom for pagination */
+        }
+
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            
+        }
+
+        th, td {
+            padding: 5px; /* Adjust padding as needed */
+            border: 1px solid black;
+            font-size: 12px; /* Adjust font size as needed */
+            line-height: 1.2; /* Adjust line height as needed */
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        #gcgcgc{
+            font-size: 20px;
+    max-width: 600px; /* Optional: to limit the max width */
+    margin: 0; /* Remove all margins to stick it to the left */
+    padding: 0; /* Optional: Add padding if needed */
+    text-align: left; /* Align all text to the left */
+    position: relative; /* Positioning context */
+    align-items: flex-start;
+    align-self: flex-start;
+    align-content: flex-start;
+    float: left; /* Align the container to the left of the page */
+    clear: both; /* Clear any floats to ensure correct layout */
+}
+
+
+    </style>
+
+    </style>
+</head>
+<script>
+       document.addEventListener('DOMContentLoaded', function() {
+    var sendMessageBtn = document.getElementById('sendMessageBtn');
+    var messageInput = document.getElementById('messageInput');
+
+    sendMessageBtn.addEventListener('click', function() {
+        var message = messageInput.value;
+        var messageContainer = document.getElementById('chat12');
+
+        // Create a div for the user's sent message
+        var userMessageElement = document.createElement('div');
+        
+        // Apply styles for the user's sent message (aligned right)
+
+        userMessageElement.style.padding = '14px';
+        userMessageElement.style.backgroundColor = 'pink';
+        userMessageElement.style.marginBottom = '10px';
+        userMessageElement.style.borderRadius = '40px';
+        userMessageElement.style.float = 'right';  // Align message to the right
+        
+        // Clean and display the user's message
+        var cleanMessage = message.replace('Received message:', '').trim();
+        userMessageElement.textContent = cleanMessage;
+        messageContainer.appendChild(userMessageElement);
+
+        // Clear input field after sending message
+        messageInput.value = '';
+
+        // Send message to server
+        fetch('/send_message', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ message: message })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Create a div for the AI's response (aligned left)
+            var aiResponseElement = document.createElement('div');
+            aiResponseElement.style.fontSize = '16px';
+            aiResponseElement.style.backgroundColor = '#ff00ea';  // Custom background for response
+            aiResponseElement.style.padding = '10px';
+            aiResponseElement.style.marginBottom = '10px';
+            aiResponseElement.style.borderRadius = '40px';
+            aiResponseElement.style.float = 'left';  // Align response to the left
+            aiResponseElement.align="left";
+            aiResponseElement.id="gcgcgc"
+            aiResponseElement.style.alignItems='left';
+            aiResponseElement.style.alignContent='left';
+            aiResponseElement.alignItems='left';
+            aiResponseElement.alignContent='left'
+            aiResponseElement.style.textAlign='left'
+            aiResponseElement.textAlign='left'
+            aiResponseElement.style.marginLeft='0px';
+            aiResponseElement.style.marginright='500px';
+
+            // Display the received response data (assuming data.rows contains the content)
+            aiResponseElement.textContent = data.rows;
+            messageContainer.appendChild(aiResponseElement);  // Append response to container
+
+            // Clear floats to ensure proper layout
+            messageContainer.style.clear = 'left';
+        })
+        .catch(error => {
+            console.error('Error sending message:', error);
+        });
+    });
+});
+
+</script>
+<body>
+    <div class="App">
+        <div class="sideBar">
+            <div class="upperSide">
+                <div class="upperSideTop">
+                
+                    <span class="brand">CHATBOT</span>
+                </div>
+                <button class="midbtn" onclick="// Reload the current page
+                window.location.reload();
+                ">
+                    
+                    New Chat
+                </button>
+                
+               
+            </div>
+            <div id="output" style="font-size:10px;">
+                <!-- Data will be displayed here -->
+            </div>
+            
+        </div>
+        <div class="main" >
+            <div class="chat bot" style="flex-direction: column;height: 600px;overflow: scroll; display: flex;align-items: end;" id="chat12"  >
+               
+                    
+                        
+                    
+                
+            </div>
+            
+            
+            <div class="chatFooter">
+                <div class="inp" >
+                    <input type="text" id="messageInput" placeholder="Send a Message">
+                    <button id="sendMessageBtn" >Send</button><button id="startRecognition">mike</button>
+                </div>
+            </div>
+            
+            </div>
+            
+            
+            
+        </div>
+    </div>
+</body>
+<script>
+    // Check if the browser supports speech recognition
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+        alert("Speech recognition is not supported in this browser.");
+    } else {
+        const recognition = new SpeechRecognition();
+        recognition.lang = 'en-US';  // Set the language for recognition
+        recognition.interimResults = true; // Get interim results while speech is ongoing
+        recognition.continuous = true; // Keep recognition active until stopped
+        
+        // Get the input field and button elements
+        const messageInput = document.getElementById('messageInput');
+        const startRecognitionButton = document.getElementById('startRecognition');
+        
+        // Variable to hold the final transcript
+        let finalTranscript = '';
+
+        // Event handler for when speech is recognized
+        recognition.onresult = function(event) {
+            let interimTranscript = '';
+            for (let i = event.resultIndex; i < event.results.length; i++) {
+                const result = event.results[i];
+                if (result.isFinal) {
+                    const transcript = result[0].transcript;
+                    // Check for the command to stop
+                    if (transcript.toLowerCase().includes('stop')) {
+                        recognition.stop();
+                        messageInput.value=messageInput.value.replace("stop","")
+                        return;
+                    }
+                    finalTranscript += transcript + ' ';
+                } else {
+                    interimTranscript += result[0].transcript;
+                }
+            }
+            // Update input field with final and interim results combined
+            messageInput.value = finalTranscript + interimTranscript;
+        };
+        
+        // Start recognition when the button is clicked
+        startRecognitionButton.addEventListener('click', function() {
+            finalTranscript = ''; // Reset final transcript
+            messageInput.value = ''; // Clear the input field
+            recognition.start();
+        });
+        
+        // Handle errors
+        recognition.onerror = function(event) {
+            console.error('Speech recognition error detected:', event.error);
+        };
+        
+        // Handle recognition end
+        recognition.onend = function() {
+            console.log('Speech recognition service disconnected');
+        };
+    }
+</script>

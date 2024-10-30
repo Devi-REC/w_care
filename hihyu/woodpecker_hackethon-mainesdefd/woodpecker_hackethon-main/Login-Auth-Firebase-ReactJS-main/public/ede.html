@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="./favicon1.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <title>chatbot</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, black, darkviolet, violet);
+        }
+        .App {
+            display: flex;
+            height: 100vh;
+            background: linear-gradient(45deg, black, darkviolet, violet);
+        }
+        .sideBar {
+            background-color: #ffffff9f;
+            border-right: 2px solid rgb(49, 26, 57);
+            padding: 20px;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .upperSide {
+            margin-bottom: 20px;
+        }
+        .upperSideTop {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .brand {
+            font-size: x-large;
+            font-weight: bolder;
+            color: #452146;
+        }
+        .midbtn {
+            background-color: #830e85;
+            width: 200px;
+            align-items: center;
+            color: hsl(0, 0%, 100%);
+            font-weight: bold;
+            font-size: large;
+            border: none;
+            padding: 10px;
+            border-radius: 7px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+        }
+        .midbtn:hover {
+            background-color: #5100b36d;
+        }
+        .addbtn {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        .query {
+            background-color: transparent;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .query img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        .lowerSide {
+            display: flex;
+            flex-direction: column;
+            margin-top: auto;
+        }
+        .listItems {
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .listitemsImg {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        .logoutBtn, .profileBtn {
+            background-color: #830e85;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            width: 100%;
+        }
+        .logoutBtn:hover, .profileBtn:hover {
+            background-color: #5100b36d;
+        }
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .chats {
+            flex: 1;
+            padding: 20px;
+            overflow-y: scroll;
+        }
+        .chat {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        .chatImg {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .mySelect1 {
+            width: 250px;
+            height: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .mySelect {
+            width: 250px;
+            height: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .mySelect:hover {
+            border: 2px solid #8400ff;
+        }
+        .mySelect1:hover {
+            border: 2px solid #8400ff;
+        }
+        .txt {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 60%;
+            word-wrap: break-word;
+        }
+        .bot .txt {
+            background-color: #28a745;
+        }
+        .chatFooter {
+            padding: 20px;
+            background-color: #ffffffa1;
+            border-top: 1px solid rgb(100, 100, 100);
+        }
+        .inp {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .messageInput {
+            box-shadow: 0.5px 6px 17px 0.75px rgba(178, 15, 243, 0.738);
+        }
+        .inp input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 20px;
+            font-size: 16px;
+        }
+        .inp > input:hover {
+            border: 1px solid #8400ff;
+        }
+        .sendMessageBtn {
+            color: #fff;
+            border: none;
+            padding: 10px;
+            background-color: #830e85;
+            border-radius: 6px;
+            font-size: 16px;
+            width: 80px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .send img {
+            width: 20px;
+            height: 20px;
+        }
+        .sendMessageBtn:hover {
+            background-color: #5100b36d;
+        }
+        .chatFooter p {
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var selectElement = document.getElementById('mySelect');
+
+        // Fetch options from Flask endpoint
+        fetch('/get_options')
+            .then(response => response.json())
+            .then(data => {
+                // Populate options in select element
+                data.forEach(option => {
+                    var optionElement = document.createElement('option');
+                    optionElement.value = option.text;
+                    optionElement.textContent = option.text;
+                    selectElement.appendChild(optionElement);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching options:', error);
+            });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var sendMessageBtn = document.getElementById('sendMessageBtn');
+        var messageInput = document.getElementById('messageInput');
+
+        sendMessageBtn.addEventListener('click', function() {
+            var message = messageInput.value;
+            var messageContainer = document.getElementById('chat12');
+            var messageElement = document.createElement('p');
+            
+            // Apply styles using the style property
+            messageElement.style.paddingLeft = '10px';
+            messageElement.style.padding = '14px';
+            messageElement.style.backgroundColor = 'white';
+            messageElement.style.marginBottom = '10px';
+            messageElement.style.border = 'solid 2px black';
+            var cleanMessage = message.replace('Received message:', '').trim();
+            messageElement.textContent = cleanMessage;
+            messageContainer.appendChild(messageElement);
+
+            // Clear input field after sending message
+            messageInput.value = '';
+
+            // Handle response as needed
+            fetch('/send_message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data);
+            })
+            .catch(error => {
+                console.error('Error sending message:', error);
+            });
+        });
+    });
+
+    const selectElement = document.getElementById('mySelect');
+
+    // Add event listener for 'change' event
+    selectElement.addEventListener('change', function() {
+        // Get the selected option value
+        const selectedValue = selectElement.value;
+        alert(selectedValue);
+
+        // Send AJAX request to Python server
+        fetch('/get_options', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ selectedValue: selectedValue })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Update the result in HTML
+            const selectElement1 = document.getElementById('mySelect1');
+            selectElement1.innerHTML = "";
+            alert(data.selectElement);
+            data.selectedValue.forEach(option => {
+                var optionElement = document.createElement('option');
+                optionElement.value = option.text;
+                optionElement.textContent = option.text;
+                selectElement1.appendChild(optionElement);
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+
+    function asa() {
+        // Fetch data from Flask endpoint
+        fetch('/send_message')
+            .then(response => response.json())
+            .then(data => {
+                // Process data and create table dynamically
+                const results = data.results;
+                const chatBotDiv = document.getElementById('chat12');
+
+                // Create table element
+                const table = document.createElement('table');
+                table.classList.add('results-table'); // Optional: Add class for styling
+
+                // Create table header
+                const thead = document.createElement('thead');
+                const headerRow = document.createElement('tr');
+                Object.keys(results[0]).forEach(key => {
+                    const th = document.createElement('th');
+                    th.textContent = key;
+                    headerRow.appendChild(th);
+                });
+                thead.appendChild(headerRow);
+                table.appendChild(thead);
+
+                // Create table body
+                const tbody = document.createElement('tbody');
+                results.forEach(result => {
+                    const row = document.createElement('tr');
+                    Object.values(result).forEach(value => {
+                        const td = document.createElement('td');
+                        td.textContent = value;
+                        row.appendChild(td);
+                    });
+                    tbody.appendChild(row);
+                });
+                table.appendChild(tbody);
+
+                // Append table to chat bot div
+                chatBotDiv.appendChild(table);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }
+</script>
+<body>
+    <div class="App">
+        <div class="sideBar">
+            <div class="upperSide">
+                <div class="upperSideTop">
+                    <span class="brand">CHATBOT</span>
+                </div>
+                <button class="midbtn">
+                    <img src="add-30.png" alt="new chat" class="addbtn">
+                    New Chat
+                </button>
+                <div class="selectContainer">
+                    <label for="mySelect">Select a database:<br></label>
+                    <select id="mySelect" class="mySelect">
+                        <!-- Options will be populated dynamically here -->
+                    </select>
+                </div>
+                <div id="selectContainer1">
+                    <label for="mySelect1">Select a Table:<br></label>
+                    <select id="mySelect1" class="mySelect1">
+                        <!-- Options will be populated dynamically here -->
+                    </select>
+                </div>
+            </div>
+            <div class="lowerSide">
+                <button class="profileBtn" onclick="window.location.href='/profile'">Profile</button>
+                
+            </div>
+        </div>
+        <div class="main">
+            <div class="chats">
+                <div class="chat"></div>
+                <div class="chat bot" style="display: flex; align-items: end; align-content: end; justify-content: end;" id="chat12"></div>
+            </div>
+            <div class="chatFooter">
+                <div class="inp">
+                    <input type="text" id="messageInput" class="messageInput" placeholder="Send a Message">
+                    <button id="sendMessageBtn" class="sendMessageBtn">Send</button>
+                </div>
+                <p>ChatBot can make mistakes. Consider checking important information.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

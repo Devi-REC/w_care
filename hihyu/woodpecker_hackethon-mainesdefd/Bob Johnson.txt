@@ -1,0 +1,482 @@
+Adaptive Reading Level:
+
+To automatically adjust the difficulty of the reading material based on a student's progress, you may use intelligent algorithms that analyze their reading speed, comprehension, and interests. Dynamically adjusting the difficulty of texts can be achieved by using a combination of the following techniques:
+
+1. Assorted Texts: Provide a variety of texts with varying levels of difficulty in each topic. This allows the algorithm to make appropriate selections based on the student's progress.
+
+2. Cloze Tests: Perturb the text by removing certain words or phrases, and ask the student to fill them in. The algorithm can then calibrate the difficulty based on the percentage of correct answers.
+
+3. Vocabulary exercises: Incorporate word lists and quizzes to track the student's comprehension of new terms and concepts, adjusting the difficulty accordingly.
+
+4. Real-time Feedback: Analyze the student's responses and adjust the difficulty of subsequent texts based on their performance.
+
+For better understanding, let's discuss a sample question and answer based on the provided unit on "Transport Layer":
+
+Question: What are the differences between TCP and UDP in terms of their connection management and congestion control?
+
+Answer:
+TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are both transport layer protocols in computer networks. The main differences between them lie in their connection management and congestion control approaches.
+
+1. Connection management:
+TCP is a connection-oriented protocol, which means it establishes a connection between sender and receiver before transmitting data. This connection is defined with a set of communication rules, and the connection is maintained throughout the data transfer. UDP, on the other hand, is connectionless. It does not require establishing a connection before sending data.
+
+2. Congestion control:
+TCP employs several congestion control mechanisms to prevent network congestion and to ensure smooth data flow. These mechanisms include:
+
+   a. Slow-start
+   b. Congestion avoidance (TCP Tahoe and TCP Reno)
+   c. Fast retransmit
+   d. Fast recovery
+   e. Selective acknowledgments (SACK)
+   f. Window scaling
+
+UDP does not have any congestion control built-in. This is because it is used for time-sensitive applications where faster transmission is prioritized over flow control and congestion avoidance.
+
+Using the adaptive reading level techniques described above, you can dynamically adjust the difficulty of questions and texts based on the student's progress and interests.
+
+Question 1: In a star topology network, how does data transfer occur between devices?
+A: Data is sent to the central controller, which then relays the data to the connected device.
+
+Question 2: What are the benefits of a star topology network?
+A: Star topology networks are less expensive, easier to install and reconfigure, and more robust as a single link failure only affects that link.
+
+Question 3: What are the drawbacks of a star topology network?
+A: Star networks require more cable compared to bus and ring topologies, and the failure of the central controller can incapacitate the entire network.
+
+Question 4: How does a bus topology network connect devices?
+A: Devices are connected to a single long cable, called the backbone, using drop lines or taps.
+
+Question 5: What advantages does a bus topology network offer?
+A: Installation is easy, and it uses less cabling than mesh or star topologies.
+
+Question 6: What are the drawbacks of a bus topology network?
+A: Bus topology networks are challenging to reconfigure and isolate, experience signal degradation due to reflection at taps, and a fault or break in the bus cable stops all transmission.
+
+Questions based on the provided text:
+
+1. What is the main responsibility of the Network Layer?
+Answer: The main responsibility of the Network Layer is to deliver packets from the source to the destination.
+
+2. Why is logical addressing needed in networking?
+Answer: Logical addressing is needed in networking when a packet passes the network boundary to provide a separate addressing system for the source and destination.
+
+3. What devices are responsible for delivering packets to their final destination?
+Answer: Routers, which are devices that connect various networks, are responsible for delivering packets to their final destination.
+
+4. What is the primary function of the Transport Layer?
+Answer: The primary function of the Transport Layer is the source to destination delivery of the entire message.
+
+5. Why is port addressing necessary in the Transport Layer?
+Answer: Port addressing is necessary in the Transport Layer to ensure that the entire message is delivered to the correct process on a computer.
+
+6. How does the Transport Layer ensure that the message arrives in order?
+Answer: The Transport Layer achieves this by dividing the message into segments and assigning each segment a sequence number, which is then arranged correctly on the arrival side.
+
+IMPORTANT: Please note that the questions and answers provided are based on the text you provided. Let me know if you need further clarification or additional questions.
+
+Absolutely, here are some questions based on the provided text on bit-oriented protocols:
+
+1. What is the main characteristic of a bit-oriented protocol?
+Answer: A bit-oriented protocol does not concern itself with byte boundaries and views the frame as a collection of bits.
+
+2. What is an example of a bit-oriented protocol mentioned in the text?
+Answer: The Synchronous Data Link Control (SDLC) protocol developed by IBM is an example of a bit-oriented protocol, later standardized as the High-Level Data Link Control (HDLC) protocol by ISO.
+
+3. How does HDLC denote the beginning and end of a frame?
+Answer: HDLC denotes both the beginning and end of a frame with the distinguished bit sequence 01111110.
+
+4. Why do bit-oriented protocols use bit stuffing?
+Answer: Bit-oriented protocols use bit stuffing because the distinguished bit sequence 01111110 might appear anywhere in the body of the frame, potentially crossing byte boundaries.
+
+5. How does bit stuffing work in the HDLC protocol?
+Answer: In the HDLC protocol, on the sending side, whenever 0 followed by five consecutive 1's is seen, the sender inserts a 0. On the receiving side, when 0 followed by five consecutive 1's arrives, the receiver removes the next bit if it is a 0, indicating it was stuffed.
+
+I hope these questions and answers are helpful for testing comprehension of the provided text on bit-oriented protocols.
+
+Question 1: What is the purpose of adapting the difficulty of the reading material based on a student's progress?
+A: It helps the student to better understand the material and improve their learning experience.
+
+Question 2: What is the significance of the polynomial generator in CRC generation?
+A: The polynomial generator is responsible for creating an algebraic polynomial that represents the divisor in the CRC (Cyclic Redundancy Check) and has specific properties for efficient error detection in digital communication systems.
+
+Question 3: What are some key properties of an effective polynomial generator?
+A: An effective polynomial generator should have:
+1. At least two terms.
+2. The coefficient of the highest-degree term should be non-zero.
+3. Not be divisible by x.
+4. Be divisible by x + 1.
+
+Question 4: What are the benefits of using the polynomial format for representing a divisor in CRC?
+A: The polynomial format is beneficial as it allows for easier mathematical manipulation and solution of the concept.
+
+Question 5: Why is the leftmost bit of a binary number important?
+A: The leftmost (or most significant) bit of a binary number provides important information about the overall value of the number, as its state determines whether the number is positive or negative, as well as its overall magnitude.
+
+Error: Unable to decode JSON response
+
+I can help you with summarizing and providing questions based on the text you provided. Here is a summary:
+
+The text discusses Carrier Sense Multiple Access (CSMA) protocols and the behavior of stations when accessing the medium. It explains how collisions can occur when multiple stations try to send frames simultaneously and how CSMA aims to prevent such collisions. It also mentions different CSMA protocols like Non-Persistent CSMA, L-Persistent CSMA, and p-Persistent CSMA, each with its own method of accessing the medium. The text emphasizes the importance of following protocol to prevent collisions and minimize wasted bandwidth.
+
+Now, here are some questions based on the text:
+1. What happens when a station sends a frame and another station attempts to send a frame at the same time?
+2. How does the first bit of a frame reaching the end of the medium prevent further stations from sending?
+3. Explain the concept of the vulnerable time for CSMA.
+4. What are the different types of CSMA protocols mentioned in the text?
+5. Describe the actions a station should take when the medium is idle in CSMA.
+6. What should a station do when the medium is busy in CSMA?
+7. What is the significance of using persistence methods in accessing the medium in CSMA?
+8. How does Non-Persistent CSMA handle stations with frames to be sent?
+9. Discuss the performance implications of random delays and large backoff times in CSMA.
+
+I hope these questions help you better understand the text. If you have any more questions or need further assistance, feel free to ask!
+
+Question 1: What is the purpose of the preamble in an Ethernet frame? 
+Answer 1: The purpose of the preamble in an Ethernet frame is to allow the receiver to synchronize with the signal, acting as a sequence of alternating 0s and 1s.
+
+Question 2: What are the two types of Ethernet addresses mentioned in the text? 
+Answer 2: The two types of Ethernet addresses mentioned in the text are unique Ethernet addresses (belonging to the adaptor) and multicast addresses (sent to multiple recipients).
+
+Question 3: How does an Ethernet adaptor determine whether to accept or discard a frame?
+Answer 3: An Ethernet adaptor accepts frames that are addressed to its own unique Ethernet address, broadcast address, or multicast address if instructed.
+
+Question 4: What does "I-persistent" refer to in the context of the Ethernet transmitter algorithm?
+Answer 4: I-persistent in the Ethernet transmitter algorithm refers to the fact that an adaptor with a frame to send will transmit with a probability of 1 whenever a busy line goes idle, resulting in possible collisions on the network.
+
+Here are some questions based on the text provided about Bluetooth technology:
+
+1. What is the main purpose of Bluetooth technology?
+2. Define an ad hoc network and explain how it applies to Bluetooth.
+3. What is the typical range of communication for Bluetooth devices?
+4. How is Bluetooth often categorized in terms of network size?
+5. What kind of speeds does Bluetooth version 2.0 offer?
+6. Who specifies the protocols for Bluetooth technology?
+7. What is a piconet in the context of Bluetooth networks?
+8. How many devices can be part of a piconet, and what are their roles?
+9. How does communication occur within a piconet?
+10. What does it mean for a slave device to be "parked" in a Bluetooth network?
+
+Now, I will provide answers to the questions:
+1. The main purpose of Bluetooth technology is to wirelessly connect different devices for short-range communication.
+2. An ad hoc network is a network that is formed spontaneously as devices find each other and establish connections. Bluetooth uses this approach for creating networks.
+3. Bluetooth devices typically have a range of only 10 meters for communication.
+4. Bluetooth is sometimes categorized as a Personal Area Network (PAN) due to the small size of the network it supports.
+5. Bluetooth version 2.0 provides speeds of up to 2.1 Mbps.
+6. Bluetooth protocols are specified by an industry consortium called the Bluetooth Special Interest Group.
+7. A piconet in Bluetooth refers to the basic network configuration that consists of a master device and up to seven slave devices.
+8. In a piconet, the master device controls communication with up to seven slave devices, which do not directly communicate with each other.
+9. Communication within a piconet occurs between the master device and a slave device.
+10. Parking a slave device in a Bluetooth network means setting it to an inactive, low-power state.
+
+I hope these questions and answers help you better understand Bluetooth technology!
+
+Question 1: What happens during the data transfer phase in networking?
+Answer 1: The data transfer phase is active until the source sends all its frame to the destination when the connection state is established.
+
+Question 2: What occurs during the teardown phase in networking?
+Answer 2: In the teardown phase, after sending all frames to the destination, the source sends a special frame called a teardown request, and the destination responds with a teardown confirmation frame. All switches involved delete the corresponding entry from their tables.
+
+Question 3: What is source routing in networking?
+Answer 3: Source routing is a type of less commonly used approach in packet switching where all the information about the network topology required to switch a packet across the network is provided by the source host.
+
+Question 4: What is the main difference between circuit switching and packet switching?
+Answer 4: In circuit switching, the connection between two stations is a dedicated path using physical links, while in packet switching, virtual connections are established between two stations. Circuit switching is used in telephone companies, whereas packet switching is used in switched WANs such as frame relay and ATM networks.
+
+Question 5: What are the types of packet switching approaches mentioned in the text?
+Answer 5: The types of packet switching approaches mentioned are the Datagram approach, Virtual circuit approach, and Source routing.
+
+Please let me know if you need more questions or information.
+
+Here are some questions based on the text provided:
+
+Questions:
+1. What does "IP" stand for?
+2. What is the key tool used today to build scalable, heterogeneous internetworks?
+3. What does the Internet Protocol define for a collection of networks?
+4. What are the two parts of the service model mentioned in the text?
+5. What is the Datagram Delivery Model?
+6. What does a datagram carry that enables the network to forward it to the correct destination?
+7. What is best effort delivery in the context of datagram delivery?
+8. What are some advantages of the Datagram Delivery Model?
+
+Answers:
+1. IP stands for Internet Protocol.
+2. The key tool used today to build scalable, heterogeneous internetworks is IP.
+3. The Internet Protocol defines the infrastructure that allows nodes and networks in a collection to function as a single logical internetwork.
+4. The two parts of the service model are Datagram Delivery Model and Global Addressing Scheme.
+5. The Datagram Delivery Model is a connectionless model for data delivery.
+6. A datagram carries enough information to let the network forward it to the correct destination.
+7. Best effort delivery means that packets can be lost, delivered out of order, have duplicate copies, or be delayed for a long time.
+8. Some advantages of the Datagram Delivery Model are simplicity, enabling IP to run over various network technologies, and providing a way for higher-level protocols like TCP to handle failure modes.
+
+Error: Unable to decode JSON response
+
+Question: What is the primary purpose of ICMP messages?
+Answer: The primary purpose of ICMP messages is to send error and control information, such as error messages reporting problems encountered when processing IP datagrams.
+
+Question: How does ICMP handle error messages?
+Answer: ICMP always sends error messages back to the original source host whenever a router or host is unable to process an IP datagram successfully.
+
+Question: How are ICMP messages categorized?
+Answer: ICMP messages are categorized into two broad categories: error-reporting messages and query messages.
+
+Question: What information do error-reporting messages in ICMP provide?
+Answer: Error-reporting messages in ICMP provide information about problems that a router or host may encounter when processing an IP packet.
+
+Question: What is the purpose of query messages in ICMP?
+Answer: Query messages in ICMP help a host or a network manager obtain specific information from a router or another host.
+
+I hope these questions and answers help you! Let me know if you need more information or have any other questions.
+
+I can help you with information and clarifications related to the text you provided about Computer Networks. Feel free to ask any specific questions you have regarding the content, and I'll do my best to assist you.
+
+Question 1: What is the main characteristic of a star topology network?
+A: Each device connects directly to a central controller, which relays data between devices.
+
+Question 2: What is one advantage of a star topology over a mesh topology?
+A: It is less expensive and requires fewer cables compared to a mesh topology.
+
+Question 3: What limitation does a bus topology face due to the use of a single long cable for connection?
+A: The number of taps or connections a bus topology can support is limited by the strength of the signal, which decreases over distance.
+
+Question 4: What is a potential issue with signal reflection in a bus topology network?
+A: It can cause signal degradation and noise in both directions due to signal reflection at the taps.
+
+Question 5: How does a fault or break in the bus cable affect a bus topology network?
+A: It stops all transmission, as the single cable serves as a backbone for connecting all devices.
+
+Answers:
+1. A: Each device connects directly to a central controller, which relays data between devices.
+2. A: It is less expensive and requires fewer cables compared to a mesh topology.
+3. A: The number of taps or connections a bus topology can support is limited by the strength of the signal, which decreases over distance.
+4. A: Signal reflection in a bus topology network can cause signal degradation and noise in both directions due to reflection at the taps.
+5. A: A fault or break in the bus cable stops all transmission, as the single cable serves as a backbone for connecting all devices.
+
+Here are some questions based on the provided text:
+
+1. What is the main responsibility of the Network Layer?
+Answer: The main responsibility of the Network Layer is to ensure the delivery of packets from the source to the destination when sending information from one network to another.
+
+2. What is logical addressing, and why is it necessary?
+Answer: Logical addressing is another addressing system for the source and destination when a packet passes the network boundary. It is necessary because it helps in routing packets to their final destination.
+
+3. What are routers and what is their role in packet delivery?
+Answer: Routers are devices that connect various networks and are responsible for delivering packets to their final destination.
+
+4. What is the role of the Transport Layer?
+Answer: The Transport Layer is responsible for the process-to-process delivery of an entire message and ensures whether the message arrives in order or not.
+
+5. What is port addressing, and why is it important?
+Answer: Port addressing is the inclusion of an address called a port address in the header of a message. It is important because it helps in getting the entire message to the correct process on a computer.
+
+6. What is segmentation and reassembly, and how does it work?
+Answer: Segmentation and reassembly involve dividing a message into segments and assigning each segment a sequence number. These numbers are arranged correctly on the arrival side by the Transport Layer.
+
+IMP:I hope you find these questions and answers helpful for better understanding of the Network Layer and Transport Layer concepts. Let me know if you need further clarification or additional questions.
+
+I can help with questions related to the text about bit-oriented protocols and HDLC. Here are some sample questions based on the provided text:
+
+1. What is the main characteristic of a bit-oriented protocol?
+2. Which company developed the Synchronous Data Link Control (SDLC) protocol?
+3. How is the HDLC protocol denoted at the beginning and end of a frame?
+4. What is the purpose of bit stuffing in the HDLC protocol?
+5. How does the receiver handle the situation when 0 followed by five consecutive 1's arrive?
+
+Would you like answers to these questions or any additional information? Feel free to ask!
+
+Based on the context provided, here's an example question and answer related to the passage on polynomial generators:
+
+Question: What are the properties of a suitable polynomial generator?
+
+Answer: The polynomial generator should have the following properties:
+1. It should have at least two terms.
+2. The coefficient of the term x" should be non-zero.
+3. It should not be divisible by x.
+4. It should be divisible by x + 1.
+
+Please note that creating a comprehensive question-answer set based on the passage requires more context and understanding of the desired learning objectives. If you have specific questions related to this topic, feel free to ask, and I'll try my best to provide answers.
+
+**Question 1: What is the concept of Adaptive Reading Level?**
+
+**Answer 1: Adaptive Reading Level is the ability of a system to automatically adjust the difficulty of reading material based on the student's progress.**
+
+---
+
+**Question 2: What is the sender-receiver relationship in the context of the stop-and-wait algorithm?**
+
+**Answer 2: In the stop-and-wait algorithm, the sender is responsible for sending data frames, while the receiver is tasked with receiving and acknowledging these frames.**
+
+---
+
+**Question 3: Describe Scenario 4 where the timeout fires too soon in the stop-and-wait algorithm.**
+
+**Answer 3: In Scenario 4, the timeout fires too soon, leading the sender to retransmit the data frame even though there was no actual issue with the transmission.**
+
+---
+
+**Question 4: What is the main purpose of the ACK (acknowledgment) in the stop-and-wait algorithm?**
+
+**Answer 4: The ACK is sent by the receiver to acknowledge successful receipt of a data frame from the sender in the stop-and-wait algorithm.**
+
+---
+
+**Question 5: How does the loss of the original frame affect the communication process in the stop-and-wait algorithm?**
+
+**Answer 5: If the original frame is lost during transmission, the sender will have to retransmit the data frame to ensure successful communication with the receiver.**
+
+---
+
+These are the questions and answers based on the text you provided. Let me know if you need more information or have any other questions.
+
+Question 1: What is the process that occurs when a station tries to send a frame, and what can happen if any other station tries to send a frame during the same time?
+
+Answer 1: When a station sends a frame, a collision may occur if another station tries to send a frame during the same time. This happens because both frames attempt to transmit on the medium simultaneously, causing interference and data loss.
+
+---
+
+Question 2: What are the vulnerable and gray areas mentioned in the text? 
+
+Answer 2: The vulnerable area is the time and space window during which a station is likely to collide with other frames when using CSMA. The gray area in the figure represents this vulnerable area in time and space. It demonstrates the worst-case situation, where the leftmost station A sends a frame at time 1, which reaches the rightmost station D at time J+sp.
+
+---
+
+Question 3: What are the three persistence methods that a station can use to determine when to access the medium in a CSMA protocol?
+
+Answer 3: The three persistence methods that can be used in CSMA protocols are:
+1. Non-Persistent CSMA
+2. L-Persistent CSMA
+3. p-Persistent CSMA
+
+---
+
+Question 4: How does non-persistent CSMA help reduce the probability of collisions?
+
+Answer 4: In non-persistent CSMA, stations randomly delay their transmission attempts. This reduces the probability of collisions because two stations with data to be transmitted will wait for different amounts of time, making it less likely that they will try to transmit at the same time.
+
+---
+
+Question 5: What are the two main disadvantages of using large waiting times (backoff) in the non-persistent CSMA protocol?
+
+Answer 5: The two main disadvantages of using large waiting times (backoff) in non-persistent CSMA protocol are:
+1. Bandwidth wastage: When the waiting time is large, the medium can remain idle following the end of transmission, even if one or more stations have frames to send.
+2. Reduced performance: The increased waiting time can negatively impact overall network performance, as each station waits for a random amount of time before attempting to transmit their frames.
+
+Question 1: What is the purpose of the Preamble in an Ethernet frame format?
+Answer 1: The purpose of the Preamble in an Ethernet frame format is to allow the receiver to synchronize with the signal, using a sequence of alternating Os and 1s.
+
+Question 2: What information is contained in the Host and Destination Address fields?
+Answer 2: The Host and Destination Address fields contain the physical addresses of the nodes involved in the transmission, with each field being 48 bits in length.
+
+Question 3: What is the function of the Packet type field in an Ethernet frame?
+Answer 3: The Packet type field acts as a demux key to identify the higher-level protocol, allowing the receiving device to properly process the data.
+
+Question 4: What is the maximum data size that can be carried in an Ethernet frame?
+Answer 4: The maximum data size that can be carried in an Ethernet frame is 1500 bytes.
+
+Question 5: What is the purpose of the CRC (Cyclic Redundancy Check) in an Ethernet frame?
+Answer 5: The CRC (Cyclic Redundancy Check) is used for error detection, ensuring that the data transmitted is error-free and consistent with the original information.
+
+Question 6: How are Ethernet addresses represented in human-readable format?
+Answer 6: Ethernet addresses are typically represented in a human-readable format as a sequence of six numbers separated by colons. Each number corresponds to a byte of the 6-byte address, with four pairs of hexadecimal digits representing the 4-bit nibbles in each byte.
+
+Question 7: What types of frames are accepted by an Ethernet adaptor?
+Answer 7: An Ethernet adaptor accepts frames that are addressed to its own address, the broadcast address, or multicast addresses if it has been instructed to do so.
+
+Question 1: What is Bluetooth designed to connect?
+Answer 1: Bluetooth is designed to connect devices of different functions such as telephones, notebooks, computers, cameras, printers, coffee makers, and more.
+
+Question 2: What type of network is a Bluetooth LAN?
+Answer 2: A Bluetooth LAN is an ad hoc network, which means that the network is formed spontaneously.
+
+Question 3: What is the range of a Bluetooth connection?
+Answer 3: The range of a Bluetooth connection is only 10 meters.
+
+Question 4: What category is Bluetooth sometimes categorized in?
+Answer 4: Bluetooth is sometimes categorized as a Personal Area Network (PAN).
+
+Question 5: What speed does Bluetooth version 2.0 provide?
+Answer 5: Bluetooth version 2.0 provides speeds up to 2.1 Mbps.
+
+Question 6: Which group specifies Bluetooth?
+Answer 6: Bluetooth is specified by an industry consortium called the Bluetooth Special Interest Group.
+
+Question 7: What does the basic Bluetooth network configuration consist of?
+Answer 7: The basic Bluetooth network configuration is called a piconet and consists of a master device and up to seven slave devices.
+
+Question 8: What is the communication between the master and a slave in a piconet?
+Answer 8: Communication is between the master and a slave in a piconet.
+
+Question 9: Can a slave in a piconet be parked?
+Answer 9: Yes, a slave can be parked, set to an inactive, low-power state.
+
+Question 1: What is the purpose of the data transfer phase in a network?
+
+Answer 1: The purpose of the data transfer phase in a network is to send all frames from the source to the destination when the connection state is established.
+
+Question 2: What is the action taken by source A after sending all frames to B in the teardown phase?
+
+Answer 2: Source A sends a special frame called the "teardown request" after sending all frames to B in the teardown phase.
+
+Question 3: What is source routing and its role in packet switching?
+
+Answer 3: Source routing is a less commonly used approach in packet switching where the source host provides all the information about the network topology required to switch a packet across the network.
+
+Question 4: Which layer at the network is responsible for establishing virtual connections between two stations in packet switching?
+
+Answer 4: The network layer is responsible for establishing virtual connections between two stations in packet switching.
+
+Question 5: What is the main difference between messages in circuit switching and packet switching?
+
+Answer 5: In circuit switching, messages have a continuous flow, while in packet switching, messages are divided into packets of fixed or variable size.
+
+Question 6: Which types of approaches are used in switched WANS such as frame relay and ATM networks, and where are they commonly used?
+
+Answer 6: Datagram approach, virtual circuit approach, and source routing are types used in switched WANS such as frame relay and ATM networks. They are commonly used in telephone companies and switched wide area networks (WANS).
+
+Q: What does IP stand for in networking?
+A: Internet Protocol
+
+Q: What is the key tool used today to build scalable, heterogeneous internetworks?
+A: Internet Protocol (IP)
+
+Q: What is the Datagram Delivery Model?
+A: Datagram Delivery Model is a connectionless model for data delivery over a network.
+
+Q: What is the advantage of Datagram Delivery Model?
+A: One advantage of the Datagram Delivery Model is that it provides a best-effort, connectionless service.
+
+Q: What are some characteristics of Datagram Delivery?
+A: Datagram delivery involves packets being sent in a connectionless manner, where packets can be lost, delivered out of order, or delayed for a long time.
+
+Q: Why is asking for a reliable packet delivery service not ideal with Datagram Delivery?
+A: Asking for a reliable packet delivery service with Datagram Delivery may require incorporating a lot of extra functionality into the router.
+
+Q: What higher-level protocol runs over IP and is aware of all failure modes?
+A: TCP (Transmission Control Protocol) is a higher-level protocol that runs over IP and is aware of all failure modes.
+
+Q: What does the Global Addressing Scheme provide?
+A: The Global Addressing Scheme provides a way to identify all hosts in the network.
+
+Q: What is the purpose of IP in a collection of networks?
+A: IP defines the infrastructure that allows nodes and networks to function as a single logical internetwork.
+
+Q: What service model encompasses host-to-host services and two main parts?
+A: The service model encompasses host-to-host services and has two main parts: Datagram Delivery Model and Global Addressing Scheme.
+
+Error: Unable to decode JSON response
+
+Question: What is the purpose of ICMP in a network?
+Answer: ICMP is used for error and control information, defining a collection of error messages that are sent back to the source host whenever a router or host is unable to process an IP datagram successfully.
+
+Question: How does ICMP report error messages?
+Answer: ICMP always reports error messages to the original source.
+
+Question: Into what two broad categories are ICMP messages divided?
+Answer: ICMP messages are divided into error-reporting messages and query messages.
+
+Question: What do error-reporting messages in ICMP do?
+Answer: Error-reporting messages report problems that a router or a host may encounter when processing an IP packet.
+
+Question: What is the purpose of query messages in ICMP?
+Answer: Query messages, which occur in pairs, help a host or a network manager get specific information from a router or another host.
+

@@ -20,8 +20,8 @@ export default function Main() {
             case 'Home':
               iconName = 'home';
               break;
-            case 'Alert':
-              iconName = 'notifications';
+            case 'Health':
+              iconName = 'health-and-safety';
               break;
             case 'Schemes':
               iconName = 'work';
@@ -58,7 +58,7 @@ export default function Main() {
         }}
       />
       <Tab.Screen
-        name="Alert"
+        name="Health"
         component={AlertScreen}
         options={{
           headerShown: true,

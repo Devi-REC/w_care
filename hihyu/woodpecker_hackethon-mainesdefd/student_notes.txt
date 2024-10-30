@@ -1,0 +1,259 @@
+Course: Computer Networks
+
+Unit 1: Fundamentals and Data Link Layer
+- Building a network
+- Layering and protocols
+- Internet Architecture
+- Link layer Services
+- Error Detection and Correction
+
+Unit 2: Media Access and Internetworking
+- Media Access Protocols
+- Ethernet, Wireless LANs
+- Switching and Forwarding
+- Internetworking
+
+Unit 3: Routing
+- Routing algorithms
+- Subnetting, Classless Routing
+- IPv6
+
+Unit 4: Transport Layer
+- Transport layer protocols
+- UDP, TCP
+- Congestion control
+
+Unit 5: Application Layer
+- E-Mail protocols
+- DNS, HTTP, FTP
+- Telnet, web services
+
+Textbooks:
+1. Peterson, L.L. & Davie, B.S. (2011). Computer Networks: A Systems Approach, Fifth Ed. Morgan Kaufmann Publishers Ine.
+2. Forouzan, B.A. (2017). Data Communications and Networking, Fifth Edition, MoGrawHiill.
+
+Reference Books:
+1. Stallings, W. (2009). SNMP, SNMPv2, SNMPv3 and RMON 1 and 2, Third Edition, Pearson Education.
+2. Kurose, J.F. & Ross, K.W. (2017). Computer Networking - A Top-Down, Approach Featuring the Internet, Seventh Edition, Pearson Education.
+3. Tanenbaum, A.W., & Wetherall, D.J. (2010). Computer Networks, Fifth Edition, Prentice Hall.
+4. Stallings, W. (2011). Data and Computer Communications, Eighth Edition, Pearson Education.
+
+Note: College name and page number not included.
+
+Computer networks connect devices using wired or wireless channels, allowing users to share resources. Key elements include a sender, medium, and receiver. Communication effectiveness depends on delivery, accuracy, and timeliness. Networks use layers, protocols, and internet architecture to function. Link layers provide services like framing and error detection for reliable transmission.
+
+Full-Duplex communication allows data to flow in both directions simultaneously, like in telephones and modems.
+
+There are two line configurations: point-to-point and multipoint.
+- Point-to-point creates a dedicated link between two devices, with the full bandwidth reserved for them.
+- Multipoint lets more than two devices share a single link, either simultaneously (spatially shared) or taking turns (timesharing).
+
+A WAN (Wide Area Network) allows for long-distance transfer of data, voice, and media over large areas. It operates at speeds like 2 Mbps to 625 Mbps using different types of communication equipment. An Enterprise Network is a WAN owned by one company. On the other hand, a PAN (Personal Area Network) connects devices within a person's vicinity, around 10 meters. For instance, devices like laptops, PDAs, and printers can link wirelessly. This PAN can also connect to the internet without wires.
+
+In a network, each device has a direct connection to a central controller, or hub. When one device wants to send data to another, it sends the data to the hub, which then forwards it to the recipient. 
+
+Advantages of this setup:
+- Cheaper than a mesh network since each device only needs one connection
+- Easy to install and configure
+- More robust; if one connection fails, only that connection is affected
+- Requires less cable compared to a mesh network
+
+Disadvantages:
+- Requires more cable than bus and ring topologies
+- If the central controller fails, the entire network is affected
+
+In a bus network, all devices are connected to a single long cable which acts as the backbone. Devices connect to the main cable using drop lines and taps. Drop lines run between the device and the main cable, while taps create a connection with the main cable. As data travels along the cable, it weakens, limiting the number of connections a bus network can support and the distance between those connections.
+
+Advantages of a bus network:
+- Easy to install
+- Uses less cabling than mesh or star topologies
+
+Disadvantages:
+- Difficult to reconnect and isolate devices
+- Signal reflection at taps can degrade quality
+- A fault in the bus cable halts all transmission
+- Signal reflection can create noise in both directions
+
+The text discusses the constraints and requirements of a network, focusing on three key groups: Application Programmers, Network Designers, and Network Providers. Connectivity in a network involves links, nodes, and clouds. Networks can range from direct connections between computers to interconnected networks forming an internetwork. Switched networks involve nodes that forward data between links. The two main types of switched networks are circuit switched and packet switched networks. Circuit switched networks establish dedicated circuits for data transmission, while packet switched networks use a store-and-forward strategy for sending packets between nodes.
+
+To help students understand and simplify the text about network architecture and layering:
+
+Network architects create plans called network architectures, which guide the creation of networks. They use layering to break down the task into smaller, more manageable parts. 
+
+Layering makes the process better because: 
+1. It breaks down the network creation into smaller components, which are easier to manage.
+2. It provides a more modular design, so if you want to add something new, you can mostly work on one layer instead of the whole system.
+
+Briefly, in a layered network system, application programs communicate over process-to-process channels, host-to-host connectivity is important, and various other components support the functioning of the network.
+
+Please avoid using abbreviations or acronyms (like OSI layers) and make sure your language is clear for students. If any of the informations require a real technical deep dive, kindly provide an overview or a summary which a student can understand. I am here to make sure the language and tone are appropriate for the target audience.
+
+The physical layer in the OSI model handles bit-level transmission. It manages sending bits over a physical medium between devices. This layer focuses on defining interface characteristics, encoding bits into signals, and determining the data transmission rate.
+
+The network layer is like a post office that ensures individual packets reach their destination from the source, especially when sending information between different networks. It uses logical addressing and routing through devices like routers to deliver packets.
+
+The transport layer is responsible for delivering the entire message from source to destination, making sure it arrives in the correct order. It uses port addressing to direct the message to the right process on a computer and segments and reassembles the message for proper delivery.
+
+This layer is responsible for translation between different encoding systems used by computers, ensuring compatibility. It also handles encryption and decryption for secure information transfer. The Application Layer allows users to access network resources, log in remotely, access files, use virtual terminals, send emails, and access directory services for information.
+
+The text discusses different layers of network protocols. At the lowest level are various protocols like NET1, NET2, etc., implemented using hardware and software. The second layer has the Internet Protocol (IP) for connecting different networks. The third layer includes Transmission Control Protocol (TCP) and User Datagram Protocol (UDP) which provide channels to applications. TCP offers a reliable channel, while UDP offers an unreliable one. Above these layers are application protocols like HTTP, FTP, Telnet, and SMTP that enable popular applications to work together.
+
+Bit-oriented protocols like HDLC focus on organizing data at the bit level.
+Clock-based protocols like SONET rely on synchronized timing for data transmission.
+Byte-oriented protocols, like Sentinel Approach and BISYNC, use special characters to mark the beginning and end of data frames.
+In BISYNC, special SYN characters indicate the start of a frame, while STX and ETX mark the start and end of the data portion.
+To prevent confusion, BISYNC uses a technique called byte stuffing to handle special characters within the data.
+Byte stuffing involves inserting escape characters (DLE) before special characters like ETX in the data to distinguish them from actual data.
+This ensures that the receiver can accurately interpret the data without confusion.
+Overall, byte-oriented protocols use specific methods to structure and transmit data effectively.
+
+Bit-oriented protocols focus on transmitting data as a collection of bits without being restricted by byte boundaries. An example is the High-Level Data Link Control (HDLC) protocol, derived from the Synchronous Data Link Control (SDLC) developed by IBM. HDLC uses a specific bit sequence to mark the start and end of frames, ensuring synchronization between sender and receiver. To handle instances where this sequence appears within the frame, bit stuffing is employed. This technique involves adding a 0 after a series of five consecutive 1s during transmission and removing it upon reception based on the following bit.
+
+SONET frames use Non Return to Zero (NRZ) encoding for overhead bytes. The payload bytes are scrambled by XORing them with a 127-bit pattern to provide enough transitions for clock recovery at the receiver.
+
+In simpler terms: SONET frames have special coding for control data, and the main data is mixed with a pattern to help keep track of time.
+
+Data is a sequence of binary numbers. 
+
+There are ways to check for errors in data:
+
+1. Parity Check: Involves adding a redundant bit (parity bit) to make the total number of 1's even or odd.
+
+2. Cyclic Redundancy Check and Checksum: Other methods to detect errors in data transmission.
+
+Parity Check Process:
+- Sender Side: Adds a redundant bit to the data to ensure the total number of 1's is even or odd.
+- Receiver Side: Checks if the total number of 1's (including the redundant bit) is even or odd, detecting errors in the data.
+
+Data blocks are organized into a table. The last column has check bits for rows, and the last row has check bits for columns. This system can detect and correct single-bit errors, as well as one, two, or three errors, but not all errors.
+
+Cyclic Redundancy Check (CRC) is a method based on binary division. In CRC, a sequence of extra bits, known as the CRC or CRC remainder, is generated by dividing the data with a preset value, and then added to the end of the data transmitted. 
+
+At the receiving end, if the combined data and CRC can be evenly divided by the same preset value, the data is accepted. If there is a remainder, it shows that the data may have been altered during transmission and is then rejected.
+
+Procedure:
+1. Add a certain number of 0's to the data.
+2. Divide the extended data by a set value to get the CRC.
+3. Replace the added 0's with the CRC and send the data.
+4. At the receiver's end, divide the received data with the same value used to calculate the CRC. If the remainder is 0, the data is valid.
+
+In summary, CRC helps in verifying if the transmitted data is correct by performing division calculations on the data and adding extra bits for error detection.
+
+The text discusses polynomials and their role in CRC (Cyclic Redundancy Check). Polynomials are used as divisors in CRC instead of binary strings. The polynomial generator must have specific properties like having at least two terms, certain coefficients, and divisibility conditions. Different standard polynomials are used in CRC generation for various protocols.
+
+The receiver side of the checksum checker works by dividing the message (with checksum) into 16-bit words. These words are added using one’s complement addition. The sum is then complemented to create a new checksum. If the checksum value is 0, the message is accepted; otherwise, it is rejected.
+
+For example, if a 16-bit block with an 8-bit checksum like 10101001 00111001 is sent, the numbers are added using one's complement arithmetic. If the receiver adds the sections and gets all ones after complementing, it means there is no error.
+
+If there is a burst error of length 5 affecting four bits like 1010/1 1111001 00011101, the receiver can detect the error by adding the sections and checking the result.
+
+Two methods for error detection and correction are commonly used in data transmission. The first method involves retransmitting the data when an error is detected. The second method, known as Forward Error Correction (FEC), uses Hamming code to correct errors.
+
+Hamming code is a technique that adds redundancy bits to the data to correct errors. A minimum of 4 redundancy bits is needed if there are 4 data bits. These redundancy bits are placed in positions that are powers of 2 in the codeword. Each redundancy bit serves as a parity bit for different combinations of data bits, allowing for error correction.
+
+However, the downside is that the redundancy bits are also transmitted along with the data, increasing the amount of data sent.
+
+Example: Hamming Code
+
+In the first set of numbers, add a marker every 4th position to help correct errors. Then, include the total to get the Hamming Code.
+
+Example: Correcting Error
+
+If the receiver gets a string of numbers but one bit is wrong, use the markers placed in every 4th position to find and fix the error.
+
+Explanation of Wait Time and Stop-and-Wait Algorithm Scenarios:
+The image shows four different situations for the stop-and-wait algorithm:
+
+1) When the acknowledgment (ACK) is received before the timer runs out,
+2) When the original frame is lost,
+3) When the ACK is lost,
+4) When the timeout happens too quickly.
+
+The diagram displays the sender on the left and the receiver on the right, with time moving from top to bottom.
+
+The sliding window is a method used for sending and receiving data. The sender's window moves to the right when data is sent, and the receiver's window moves to the right when data is received. This allows for multiple frames of data to be sent or received at once.
+
+In Unit II on Media Access and Internetworking, students learn about Media Access Protocols like ALOHA, CSMA/CA, CSMA/CD, Ethernet, Wireless LANs, 802.11, Bluetooth, Switching, Forwarding, Bridges, LAN Switches, Basic Internetworking, IP Service Model, IP fragmentation, Global Addresses, ARP, DHCP, ICMP, Virtual Networks, and Tunnels.
+
+The data link layer has two sublayers: Logical Link Control Layer and Medium Access Control Layer.
+
+Logical Link Control Layer manages traffic, error control, assigns sequence numbers to frames, and tracks acknowledgements.
+
+Medium Access Control Layer, a sublayer of the Data Link Control Layer, shares the physical network connection among computers.
+
+One challenge is collisions when multiple nodes transmit simultaneously, wasting bandwidth. The solution is implementing a protocol to coordinate node transmissions.
+
+Protocol flow chart for ALOMA
+
+SLOTTED ALOHA
+
+- The shared channel is divided into time slots
+- Stations can only send a frame at the beginning of a slot
+- If a station misses its slot, it has to wait for the next one
+- There is still a chance of collision if two stations try to send at the same time
+
+When a station sends data, a collision may occur if another station tries to send data simultaneously. However, if the first bit of data reaches all stations before they attempt to send, collisions can be avoided. Different CSMA protocols dictate how stations should behave when the medium is free or busy. These protocols include Non-Persistent CSMA, L-Persistent CSMA, and p-Persistent CSMA. Stations are advised to wait if the medium is busy to prevent collisions. Using random delays can reduce collision probability, but excessive waiting time can lead to wasted bandwidth.
+
+This diagram shows three methods for transmitting data in a network:
+
+1. Nonpersistent: Station can transmit after waiting for the channel to be free.
+
+2. 1-persistent: Station can transmit immediately if the channel is free, or use a backoff process as though a collision occurred.
+
+3. CSMA/CD (Carrier Sense Multiple Access with Collision Detection): Sender listens to the medium for collisions while transmitting and stops transmission if a collision has occurred, reducing channel wastage.
+
+CSMA/CD is commonly used for bus topology LANs (IEEE 802.3, Ethernet).
+
+The diagram shows how CSMA/CD works in a network, like a wireless LAN, where collisions can't be detected. To prevent collisions, CSMA/CD uses three strategies: Inter Frame Space (IFS), Contention window, and Acknowledgements. These strategies help manage data transmission effectively.
+
+Ethernet is a wired LAN technology that has been widely used in the past 20 years. It's a multiple access network where nodes (devices) send and receive frames (data packets) over a shared link. This uses CSMA/CD (Carrier Sense Multiple Access with Collision Detection) technology. Ethernet can run at speeds of 100 Mbps (Fast Ethernet) or 1000 Mbps (Gigabit Ethernet) and can be used in full duplex, point-to-point configurations.
+
+An Ethernet segment can be up to 500 meters long and is set up using coaxial cables. Hosts connect to this cable through a tap, which is then connected to a transceiver. The transceiver detects when the line is idle and sends signals when a host is transmitting. It also receives incoming signals. The transceiver connects to an Ethernet adapter that's plugged into the host.
+
+To set up Ethernet, you'll also need an Ethernet cable, a voltage regulator, and a repeater to connect multiple segments. A repeater strengthens and forwards digital signals.
+
+Ethernet Frame Format is a structure used for data transmission over Ethernet networks. It includes a preamble to synchronize signals, physical addresses for sender and receiver, packet type for protocol identification, and data up to 1500 bytes.
+
+Ethernet Addresses are unique identifiers for each device on an Ethernet network, typically stored in the adaptor's ROM. They are displayed as six numbers separated by colons, representing a 6-byte address. An adaptor accepts frames addressed to itself, broadcasts, or multicast if instructed.
+
+The Ethernet Transmitter Algorithm states that when an adaptor has data to send, it immediately transmits if the line is idle. If the line is busy, it waits for it to become idle before sending. Ethernet is I-persistent, meaning the sender transmits with a probability of 1 when the line becomes idle, leading to collisions that can be detected due to collision detection support.
+
+When a device detects a collision, it waits and then tries to transmit again, increasing the wait time if it fails. This is called Exponential Backoff. 
+
+Wireless LAN (IEEE 802.11) or Wi-Fi is a technology for connecting computers in limited areas like homes, offices, and campuses. 
+
+802.11 operates over different physical layer protocols, with the fastest reaching speeds of 54 Mbps. The original standard had two methods using different frequency techniques, both running in the 2.4GHz range and providing up to 2 Mbps.
+
+Handshaking prevents problems during data transmission.
+
+First, the sender sends an RTS (Request to Send) and the receiver sends a CTS (Clear to Send) back. This lets nearby nodes know that a transmission is happening and not to interfere during its specified length.
+
+If a node sees the CTS, it knows it is close enough and won't interfere. If it sees only the RTS but not the CTS, it can still transmit. These steps help avoid two problems:
+
+1. Hidden Station Problem: Proper handshaking prevents close-by nodes from transmitting at the same time.
+
+2. Exposed Node Problem: If a node hears a transmission but isn't close enough to interfere, it can still send its own data without any issues.
+
+In 802.11, nodes can move and have varying connectivity. To handle this, some nodes, called Access Points (AP), can roam or be wired to the network. APs are connected via a distribution system, similar to cellular phone cells. The distribution network is at layer 2 of the ISO architecture. To communicate, a node joins one AP by scanning, sending Probe frames, and choosing the AP that replies. This process can happen when joining the network or when unhappy (e.g., due to weak signal while moving away from AP). When a node acquires a new AP, the new AP informs the old AP through the distribution system.
+
+Bluetooth is a short-range wireless technology that connects devices like phones, computers, cameras, and more. It forms spontaneous networks called piconets with a master and up to 7 slave devices. Bluetooth is sometimes considered a Personal Area Network (PAN). Version 2.0 allows up to 2.1 Mbps data transfer with low power consumption. The Bluetooth Special Interest Group (SIG) defines the protocols and applications (profiles) for various purposes. Piconets enable communication between the master device and slaves, with slaves not communicating directly with each other and the ability to park (inactive, low-power state).
+
+L2CAP Layer
+- Handles data exchange and can handle multiple data streams.
+
+Baseband Layer
+- Similar to the MAC sublayer in LAN networks.
+- Primary and secondary stations communicate using time slots.
+
+Radio Layer
+- Similar to the physical layer in the internet model.
+- Bluetooth devices are low-power and have a range of 10m.
+
+Switching
+- Mechanism that connects LANs to create a large network.
+- Switches create temporary connections between devices.
+- Switches receive incoming packets on one link and transmit them on another.
+- Multi-input, multi-output device that transfers packets from inputs to outputs.
+
+In a packet switched network, messages are split into packets. Two common approaches are Datagram (Connectionless) and Virtual circuit (Connection-oriented). In the Datagram approach, packets contain destination information for switches to forward them. Switches use a forwarding table to decide where to send packets. In this type of network, each packet is sent independently, and senders don't need to know if the receiver is available.
+

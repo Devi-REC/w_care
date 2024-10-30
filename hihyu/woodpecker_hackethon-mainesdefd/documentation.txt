@@ -1,0 +1,7 @@
+first we want to run app.js which consists of login by google you can also connect it with database which is firebase. then it will move to the flask page which will retrieve data from MySQL and you need to select databse and table and then it will list columns then you just give normal English sentence with column name it will fetch and shows data
+
+you need to run both the file at the time 
+flask in the templates zip and app js woodpeckerhackathon-main folder 
+
+command npm install npm start  for app.js
+then flask normal run and copy url or run as domain and copy url and paste in the profile.js in 44 line window .location.href value to url

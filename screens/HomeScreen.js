@@ -106,7 +106,7 @@ const HomeScreen = () => {
       {/* Button with Background Image */}
       <TouchableOpacity 
         style={styles.backButton}
-        onPress={() => navigation.navigate('First')}
+        onPress={() => navigation.navigate('Chatbot')}
       >
         <Text style={styles.backButtonText}>CHATBOT</Text>
       </TouchableOpacity>

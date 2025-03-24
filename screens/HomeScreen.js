@@ -110,6 +110,12 @@ const HomeScreen = () => {
       >
         <Text style={styles.backButtonText}>CHATBOT</Text>
       </TouchableOpacity>
+      <TouchableOpacity 
+        style={styles.backButton}
+        onPress={() => navigation.navigate('Chat')}
+      >
+        <Text style={styles.backButtonText}>CHAT</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 };

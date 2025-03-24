@@ -1,131 +1,117 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, FlatList ,TouchableOpacity} from 'react-native';
-import axios from 'axios';
+import React, { useState, useRef } from "react";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, FlatList } from "react-native";
+import { WebView } from "react-native-webview";
+import * as Speech from "expo-speech";
+import Constants from "expo-constants";
 
 const ChatbotScreen = () => {
   const [messages, setMessages] = useState([
-    { id: '1', text: 'Hello! How can I help you today?', sender: 'bot' },
+    { id: "1", text: "Hello! How can I assist you?", sender: "bot" },
   ]);
-  const [inputText, setInputText] = useState('');
+  const [inputText, setInputText] = useState("");
+  const webViewRef = useRef(null);
 
-  const predefinedResponses = {
-    "What should I eat during pregnancy?": "During pregnancy, focus on a balanced diet rich in fruits, vegetables, whole grains, lean proteins, and dairy. Include foods high in iron, calcium, and folic acid. Avoid raw or undercooked foods, and limit caffeine intake.",
-    "Is it normal to feel tired during pregnancy?": "Yes, feeling tired is common during pregnancy due to hormonal changes and increased energy demands. Make sure to get plenty of rest, eat a healthy diet, and stay hydrated.",
-    "What are the signs of a medical emergency during pregnancy?": "If you experience severe abdominal pain, heavy bleeding, sudden swelling, severe headaches, or reduced fetal movement, contact your doctor or visit the nearest hospital immediately.",
-    "How often should I visit the doctor during pregnancy?": "Typically, you should visit your doctor once a month during the first two trimesters, twice a month during the third trimester, and weekly as you approach your due date. However, follow your doctor's specific recommendations.",
-  };
+  // Get OpenAI API Key securely
+  const API_KEY = Constants.expoConfig.extra.openaiApiKey;
 
-  const localResources = {
-    "Find nearby hospitals": "Here are some hospitals in your area: \n1. ABC Hospital, Delhi \n2. XYZ Clinic, Mumbai \n3. PQR Maternity Center, Bangalore",
-    "Find support groups": "You can join these support groups for pregnant women: \n1. Mom's Circle, Delhi \n2. Pregnancy Care Group, Mumbai \n3. Happy Moms, Bangalore",
-  };
-
-  const emergencyResponses = {
-    "I have severe pain": "Please contact your doctor immediately or visit the nearest hospital. Severe pain could indicate a serious issue.",
-    "I am bleeding heavily": "Heavy bleeding during pregnancy is a medical emergency. Go to the nearest hospital right away.",
-  };
-
-  const sendMessage = async () => {
-    if (inputText.trim()) {
-      const userMessage = { id: Date.now().toString(), text: inputText, sender: 'user' };
-      setMessages((prevMessages) => [...prevMessages, userMessage]);
-      setInputText('');
-
-      try {
-        const response = await getBotResponse(inputText, messages);
-        const botMessage = { id: Date.now().toString(), text: response, sender: 'bot' };
-        setMessages((prevMessages) => [...prevMessages, botMessage]);
-      } catch (error) {
-        console.error('Error fetching bot response:', error.response?.data || error.message);
-        const errorMessage = { id: Date.now().toString(), text: 'Sorry, something went wrong. Please try again.', sender: 'bot' };
-        setMessages((prevMessages) => [...prevMessages, errorMessage]);
-      }
+  // Function to fetch AI response from OpenAI
+  const getBotResponse = async (text) => {
+    if (!API_KEY) {
+      console.error("OpenAI API Key is missing!");
+      return "Error: Missing API key.";
     }
-  };
-  const getBotResponse = async (query, chatHistory) => {
-    if (predefinedResponses[query]) {
-      return predefinedResponses[query];
-    }
-    if (localResources[query]) {
-      return localResources[query];
-    }
-    if (emergencyResponses[query]) {
-      return emergencyResponses[query];
-    }
-  
-    const apiKey = 'r6H0r9mAApORRZgBIUJqgMT4I3EwYYpZtqOtyEKI';
-    const url = 'https://api.cohere.ai/v1/chat';
-  
-    const customPrompt = `
-      You are a friendly and empathetic chatbot designed to assist pregnant women in India.
-      Your goal is to provide accurate, helpful, and culturally sensitive information about pregnancy.
-      Always prioritize the user's health and well-being, and encourage them to consult a doctor for serious concerns.
-  
-      Guidelines:
-      1. Provide clear and concise answers.
-      2. Use simple language that is easy to understand.
-      3. Be supportive and empathetic.
-      4. For medical emergencies, advise the user to contact their doctor or visit the nearest hospital immediately.
-  
-      Chat History: ${chatHistory.map(msg => msg.text).join('\n')}
-  
-      User Question: ${query}
-    `;
-  
-    const response = await axios.post(
-      url,
-      {
-        message: customPrompt,
-        model: 'command',
-        temperature: 0.7,
-        max_tokens: 500,
-      },
-      {
+
+    try {
+      const response = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
         headers: {
-          Authorization: `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${API_KEY}`,
         },
-      }
-    );
-  
-    let responseText = response.data.text;
-  
-    // Format the response for readability
-    responseText = responseText.replace(/\. /g, '.\n\n'); // Add spacing after full stops
-    responseText = responseText.replace(/, /g, ',\n'); // Slightly separate commas for clarity
-    responseText = responseText.trim(); // Remove extra spaces
-  
-    return responseText;
-  };
-  
+        body: JSON.stringify({
+          model: "gpt-3.5-turbo",
+          messages: [{ role: "system", content: "You are a helpful assistant." }, { role: "user", content: text }],
+        }),
+      });
 
-  const renderMessage = ({ item }) => (
-    <View
-      style={[
-        styles.messageContainer,
-        item.sender === 'user' ? styles.userMessage : styles.botMessage,
-      ]}
-    >
-      <Text style={styles.messageText}>{item.text}</Text>
-    </View>
-  );
+      const data = await response.json();
+
+      if (data.error) {
+        console.error("OpenAI Error:", data.error);
+        return "Error: Unable to get a response from OpenAI.";
+      }
+
+      return data.choices?.[0]?.message?.content || "Sorry, I couldn't understand.";
+    } catch (error) {
+      console.error("Fetch Error:", error);
+      return "Error: Unable to connect to AI service.";
+    }
+  };
+
+  const sendMessage = async (text) => {
+    if (text.trim()) {
+      const userMessage = { id: Date.now().toString(), text, sender: "user" };
+      setMessages((prevMessages) => [...prevMessages, userMessage]);
+
+      const responseText = await getBotResponse(text);
+      const botMessage = { id: Date.now().toString(), text: responseText, sender: "bot" };
+
+      setMessages((prevMessages) => [...prevMessages, botMessage]);
+      Speech.speak(responseText, { language: "en-IN", pitch: 1.2, rate: 0.6 });
+    }
+  };
+
+  // Handle speech recognition result from WebView
+  const handleSpeechResult = (event) => {
+    const spokenText = event.nativeEvent.data;
+    setInputText(spokenText);
+    sendMessage(spokenText);
+  };
 
   return (
     <View style={styles.container}>
       <FlatList
         data={messages}
-        renderItem={renderMessage}
+        renderItem={({ item }) => (
+          <View style={[styles.messageBubble, item.sender === "user" ? styles.userBubble : styles.botBubble]}>
+            <Text style={styles.messageText}>{item.text}</Text>
+          </View>
+        )}
         keyExtractor={(item) => item.id}
-        contentContainerStyle={styles.messagesList}
       />
+
+      {/* Speech Recognition WebView */}
+      <WebView
+        ref={webViewRef}
+        originWhitelist={["*"]}
+        source={{
+          html: `
+            <html>
+              <body>
+                <script>
+                  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+                  recognition.lang = 'en-IN';
+                  recognition.onresult = (event) => {
+                    const transcript = event.results[0][0].transcript;
+                    window.ReactNativeWebView.postMessage(transcript);
+                  };
+                  function startListening() {
+                    recognition.start();
+                  }
+                </script>
+                <button onclick="startListening()" style="font-size: 20px;">🎤 Start Speaking</button>
+              </body>
+            </html>
+          `,
+        }}
+        style={{ height: 50 }}
+        onMessage={handleSpeechResult}
+      />
+
+      {/* Message Input */}
       <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Type your message..."
-          value={inputText}
-          onChangeText={setInputText}
-        />
-        <TouchableOpacity style={styles.sendButton} onPress={sendMessage}>
+        <TextInput style={styles.input} value={inputText} onChangeText={setInputText} placeholder="Type a message..." />
+        <TouchableOpacity style={styles.sendButton} onPress={() => sendMessage(inputText)}>
           <Text style={styles.sendButtonText}>Send</Text>
         </TouchableOpacity>
       </View>
@@ -134,71 +120,15 @@ const ChatbotScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFEBEE',
-  },
-  messagesList: {
-    padding: 15,
-  },
-  messageContainer: {
-    maxWidth: '80%',
-    marginTop: '10%',
-    padding: 10,
-    borderRadius: 10,
-    marginVertical: 5,
-  },
-  userMessage: {
-    alignSelf: 'flex-end',
-    backgroundColor: '#FFCDD2',
-    borderWidth: 1,
-    borderColor: '#FFB8C3',
-    borderRadius: 20,
-  },
-  botMessage: {
-    alignSelf: 'flex-start',
-    backgroundColor: '#FFB8C3',
-    borderTopWidth: 1,
-    borderWidth: 2,
-    borderColor: '#E57373',
-    borderRadius: 20,
-    color: 'white',
-    padding: 10,
-    minWidth: '90%',  // Ensures the message has a readable width
-    maxWidth: '95%',  // Prevents overly wide messages
-},
-  messageText: {
-    fontSize: 16,
-    flexShrink: 1,
-  },
-  inputContainer: {
-    flexDirection: 'row',
-    padding: 10,
-    borderTopWidth: 1,
-    borderColor: '#ddd',
-    backgroundColor: '#FFEBEE',
-  },
-  input: {
-    flex: 1,
-    padding: 10,
-    borderWidth: 1,
-    borderColor: '#E57373',
-    borderRadius: 20,
-    marginRight: 10,
-    backgroundColor: 'white',
-  },
-  sendButton: {
-    backgroundColor: '#fc5b73',
-    paddingVertical: 10,
-    paddingHorizontal: 30,
-    borderRadius: 20,
-    alignItems: 'center',
-  },
-  sendButtonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
+  container: { flex: 1, padding: 10, backgroundColor: "#FFEBEE" },
+  messageBubble: { maxWidth: "80%", padding: 10, borderRadius: 15, marginVertical: 5 },
+  userBubble: { alignSelf: "flex-end", backgroundColor: "#FFCDD2" },
+  botBubble: { alignSelf: "flex-start", backgroundColor: "#FFB8C3" },
+  messageText: { fontSize: 16 },
+  inputContainer: { flexDirection: "row", padding: 10, borderTopWidth: 1, borderColor: "#ddd", backgroundColor: "#FFEBEE" },
+  input: { flex: 1, padding: 10, borderWidth: 1, borderRadius: 20, marginRight: 10, backgroundColor: "white" },
+  sendButton: { backgroundColor: "#fc5b73", paddingVertical: 10, paddingHorizontal: 20, borderRadius: 20 },
+  sendButtonText: { color: "white", fontSize: 16 },
 });
 
 export default ChatbotScreen;

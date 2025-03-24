@@ -15,7 +15,7 @@ import VolunteerDashboardScreen from './screens/VolunteerDashboardScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import SchemeDetailScreen from './screens/SchemeDetailScreen';
 import ChatbotScreen from './screens/ChatbotScreen';
-
+import ChatScreen from './screens/ChatScreen';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -28,6 +28,7 @@ export default function App() {
       <Stack.Screen name="VolunteerLogin" component={VolunteerLoginScreen} options={{ headerShown: false }} />
       <Stack.Screen name="VolunteerSignUp" component={VolunteerSignUpScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Chatbot" component={ChatbotScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Chat" component={ChatScreen} options={{ headerShown: false }} />
       <Stack.Screen name="VolunteerDashboard" component={VolunteerDashboardScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />

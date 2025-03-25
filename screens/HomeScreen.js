@@ -75,6 +75,7 @@ const HomeScreen = () => {
         <Text style={styles.title}>Pregnancy Tracker</Text>
         <Text style={styles.monthsGone}>Months Gone: {monthsGone}</Text>
       </View>
+    
       <View style={styles.autoplayImageContainer}>
       {/* New Heading for Pregnancy Journey */}
       <View style={styles.headingContainer}>

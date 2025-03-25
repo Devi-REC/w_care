@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 // Import local images
@@ -58,13 +58,22 @@ export default function SchemesScreen() {
 
   return (
     <View style={styles.container}>
-       <Text style={styles.title}>Schemes</Text>
+      <Text style={styles.title}>Schemes</Text>
+      
       <FlatList
         data={schemes}
         renderItem={renderScheme}
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.list}
       />
+
+      {/* Button to navigate to ApplicationFilterScreen */}
+      <TouchableOpacity 
+        style={styles.button} 
+        onPress={() => navigation.navigate('ApplicationFilterScreen')}
+      >
+        <Text style={styles.buttonText}>Go to Application Filter</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -94,7 +103,6 @@ const styles = StyleSheet.create({
     width:'90%', // Fixed width for consistency
   },
   schemeImage: {
-   
     borderRadius: 10,
     marginBottom: 10,
   },
@@ -111,5 +119,18 @@ const styles = StyleSheet.create({
     color: '#333', // Text color
     textAlign: 'center',
   },
+  button: {
+    marginTop: 20,
+    backgroundColor: '#d9534f',
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    width: '90%',
+    alignSelf: 'center',
+  },
+  buttonText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#fff',
+  }
 });
-

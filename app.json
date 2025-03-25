@@ -19,16 +19,18 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.wcare.app"
+      "package": "com.wcare.app",
+      "jsEngine": "jsc"   // Disable Hermes if it's causing issues
     },
-    
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "permissions": [
       "CAMERA",
       "MEDIA_LIBRARY"
-    ]
-
+    ],
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    }
   }
 }

@@ -20,7 +20,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.wcare.app",
-      "jsEngine": "jsc"   // Disable Hermes if it's causing issues
+      "jsEngine": "hermes"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -31,6 +31,10 @@
     ],
     "updates": {
       "fallbackToCacheTimeout": 0
+    },
+    "extra": {
+      "AZURE_SPEECH_KEY": "Bs0HdhBdGX0fVIxCdHBEy25T9vTmsMM0UsW43hEiDjWNEztBloohJQQJ99BCACYeBjFXJ3w3AAAYACOGD0M0",
+      "AZURE_SPEECH_ENDPOINT": "https://eastus.api.cognitive.microsoft.com/"
     }
   }
 }

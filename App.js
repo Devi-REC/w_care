@@ -40,7 +40,7 @@ export default function App() {
         <Stack.Screen name="SignUp" component={SignupScreen} options={{ headerShown: false }}/> 
         <Stack.Screen name="SchemeDetail" component={SchemeDetailScreen} options={{ headerShown: false }}/>
         <Stack.Screen name="Alert" component={AlertScreen} options={{ headerShown: false }}/> 
-    
+   
       </Stack.Navigator>
     </NavigationContainer>
   );

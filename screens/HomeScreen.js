@@ -108,16 +108,11 @@ const HomeScreen = () => {
   
       <TouchableOpacity 
         style={styles.backButton}
-        onPress={() => navigation.navigate('Chatbot')}
+        onPress={() => navigation.navigate('Chat')}
       >
         <Text style={styles.backButtonText}>CHATBOT</Text>
       </TouchableOpacity>
-      <TouchableOpacity 
-        style={styles.backButton}
-        onPress={() => navigation.navigate('Chat')}
-      >
-        <Text style={styles.backButtonText}>CHAT</Text>
-      </TouchableOpacity>
+      
     </ScrollView>
   );
 };

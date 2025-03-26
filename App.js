@@ -14,7 +14,7 @@ import VolunteerSignUpScreen from './screens/VolunteerSignUpScreen';
 import VolunteerDashboardScreen from './screens/VolunteerDashboardScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import SchemeDetailScreen from './screens/SchemeDetailScreen';
-import ChatbotScreen from './screens/ChatbotScreen';
+
 
 import ApplicationFilterScreen from './screens/ApplicationFilterScreen';
 import ChatScreen from './screens/ChatScreen';
@@ -30,7 +30,7 @@ export default function App() {
       <Stack.Screen name="Second" component={SecondScreen} options={{ headerShown: false }} />
       <Stack.Screen name="VolunteerLogin" component={VolunteerLoginScreen} options={{ headerShown: false }} />
       <Stack.Screen name="VolunteerSignUp" component={VolunteerSignUpScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="Chatbot" component={ChatbotScreen} options={{ headerShown: false }} />
+     
       <Stack.Screen name="Chat" component={ChatScreen} options={{ headerShown: false }} />
       <Stack.Screen name="VolunteerDashboard" component={VolunteerDashboardScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />

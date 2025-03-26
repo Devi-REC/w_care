@@ -14,7 +14,7 @@ const FirstScreen = ({ navigation }) => {
         </TouchableOpacity>
 
         {/* Insert the "OR" text here */}
-        <Text style={styles.middleText}>OR</Text>
+      
 
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('SignUp')}>
           <Text style={styles.buttonText}>Signup</Text>

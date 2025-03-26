@@ -13,9 +13,7 @@ const FirstPageScreen = ({ navigation }) => {
           <Text style={styles.buttonText}>Citizen</Text>
         </TouchableOpacity>
 
-        {/* Insert the "OR" text here */}
-        <Text style={styles.middleText}>OR</Text>
-
+        
         <TouchableOpacity style={styles.but} onPress={() => navigation.navigate('Second')}>
           <Text style={styles.buttonText}>volunteer</Text>
         </TouchableOpacity>

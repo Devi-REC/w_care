@@ -13,7 +13,7 @@ const SecondScreen = ({ navigation }) => {
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
 
-        <Text style={styles.middleText}>OR</Text>
+      
 
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('VolunteerSignUp')}>
           <Text style={styles.buttonText}>Signup</Text>
